@@ -83,7 +83,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/orders/list:
+ * /api/orders:
  *   get:
  *     summary:
  *     tags: [Orders]
@@ -264,7 +264,7 @@ const router = express.Router();
  */
 
 router.post('/api/orders', createOrder);
-router.get('/api/orders/list', listOrders); 
+router.get('/api/orders', listOrders); 
 router.get('/api/orders/:id', getOrderDetail);
 router.delete('/api/orders/:id', deleteOrder);
 

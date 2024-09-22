@@ -1,4 +1,4 @@
-import Product from "../../models/Products.js";
+import Product from '../../models/Products.js';
 
 export const updateProductService = async (id, productData) => {
   const { name, price, stock } = productData;
@@ -6,7 +6,7 @@ export const updateProductService = async (id, productData) => {
   try {
       const product = await Product.findByPk(id);
       if (!product) {
-          return { error: true, message: "Product not found" };
+          return { error: true, message: 'Product not found' };
       }
 
       product.name = name;
@@ -21,6 +21,6 @@ export const updateProductService = async (id, productData) => {
       };
 
   } catch (error) {
-      return { error: true, message: "Failed to update product" };
+      return { error: true, message: 'Failed to update product' };
   }
 };
