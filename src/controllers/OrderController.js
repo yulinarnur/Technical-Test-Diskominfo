@@ -1,4 +1,5 @@
 import { createOrderService } from '../service/orders/createOrder.js';
+import { listOrdersService } from '../service/orders/listOrder.js';
 import { sendResponse, sendErrResponse } from '../utils/responseUtils.js';
 
 export const createOrder = async (req, res) => {
@@ -10,7 +11,22 @@ export const createOrder = async (req, res) => {
         }
 
         return sendResponse(res, 200, 'Order created', result.data);
+
     } catch (error) {
         return sendErrResponse(res, 500, 'Internal server error', false, { error: error.message });
     }
 }
+
+export const listOrders = async (req, res) => {
+    try {
+        const result = await listOrdersService();
+        if (result.error) {
+            return sendErrResponse(res, 500, result.message);
+        }
+
+        return sendResponse(res, 200, 'Order List', result.data);
+        
+    } catch (error) {
+        return sendErrResponse(res, 500, 'Internal server error', false, { error: error.message });
+    }
+};
