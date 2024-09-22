@@ -17,6 +17,9 @@ export const validatePrice = (price) => {
     if (!PRICE_FORMAT.test(price)) {
         return { valid: false, message: "The price field must be a number." };
     }
+    if (price < 1) {
+        return { valid: false, message: "The price must be greater than or equal to 1." };
+    }
     return { valid: true };
 };
 
@@ -26,6 +29,9 @@ export const validateStock = (stock) => {
     }
     if (!STOCK_FORMAT.test(stock)) {
       return { valid: false, message: "The stock field must be a number." };
+    }
+    if (stock < 0) {
+      return { valid: false, message: "The stock must be greater than or equal to 0." };
     }
     return { valid: true };
 };

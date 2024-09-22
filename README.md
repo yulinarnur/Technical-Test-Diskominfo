@@ -1,7 +1,7 @@
 # TECHNICAL TEST
 
 ## Dokumentasi Api
-Dapat diakses secara lokal di http://localhost:5000/api/v3/api-docs
+Dapat diakses secara lokal di http://localhost:5001/api/v3/api-docs
 
 ## Tech Stack
 - Express JS
