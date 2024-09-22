@@ -34,6 +34,12 @@ Pastikan berikut ini sudah terinstall:
     
 ## Instal Depedensi & Running Server
   Untuk install depedensi dan menjalankan server, gunakan perintah berikut:
+  
    ```bash
      yarn install
      nodemon app
+
+     yarn test (Untuk menjalankan Unit Test)
+
+
+
