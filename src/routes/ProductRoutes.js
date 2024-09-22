@@ -1,5 +1,5 @@
 import express from 'express';
-import { createProduct } from '../controllers/ProductController.js';
+import { createProduct, getProducts } from '../controllers/ProductController.js';
 
 const router = express.Router();
 
@@ -64,7 +64,44 @@ const router = express.Router();
  *         description: Bad Request
  *       500:
  *         description: Internal Server Error
+ *   get:
+ *     summary: 
+ *     tags: [Products]
+ *     responses:
+ *       200:
+ *         description: A list of products
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                       name:
+ *                         type: string
+ *                       price:
+ *                         type: integer
+ *                       stock:
+ *                         type: integer
+ *                       sold:
+ *                         type: integer
+ *                       created_at:
+ *                         type: string
+ *                         format: date-time
+ *                       updated_at:
+ *                         type: string
+ *                         format: date-time
+ *       500:
+ *         description: Internal Server Error
  */
 router.post('/api/products', createProduct);
+router.get('/api/products', getProducts);
 
 export default router;
