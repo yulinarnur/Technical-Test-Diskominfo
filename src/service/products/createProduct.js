@@ -1,11 +1,26 @@
-import Product from "../../models/Products.js";
-import { validateProduct } from "../../utils/productValidation.js";
+import Product from '../../models/Products.js';
+import { validateName, validatePrice, validateStock } from '../../utils/productValidation.js';
 
 export const createProductService = async (productData) => {
-    const errors = await validateProduct(productData);
+    const errors = {};
+
+    const nameValidation = validateName(productData.name);
+    if (!nameValidation.valid) {
+        errors.name = [nameValidation.message];
+    }
+
+    const priceValidation = validatePrice(productData.price);
+    if (!priceValidation.valid) {
+        errors.price = [priceValidation.message];
+    }
+
+    const stockValidation = validateStock(productData.stock);
+    if (!stockValidation.valid) {
+        errors.stock = [stockValidation.message];
+    }
 
     if (Object.keys(errors).length > 0) {
-        return { error: true, message: "Validation failed", errors };
+        return { error: true, message: 'Validation failed', errors };
     }
 
     try {
@@ -29,6 +44,6 @@ export const createProductService = async (productData) => {
           },
         };
     } catch (error) {
-        throw new Error("Failed to create product");
+        return { error: true, message: 'Failed to create product' };
     }
 };

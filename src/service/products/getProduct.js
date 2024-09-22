@@ -25,7 +25,7 @@ export const getProductByIdService = async (id) => {
 
         return product;
     } catch (error) {
-        throw new Error("Failed to retrieve products");
+        throw new Error('Failed to retrieve products');
     }
 }
 

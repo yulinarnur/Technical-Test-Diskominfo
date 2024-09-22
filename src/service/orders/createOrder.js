@@ -1,6 +1,6 @@
-import Order from "../../models/Order.js";
-import Product from "../../models/Products.js";
-import OrderProduct from "../../models/OrderProduct.js";
+import Order from '../../models/Order.js';
+import Product from '../../models/Products.js';
+import OrderProduct from '../../models/OrderProduct.js';
 
 const updateProductStockAndSold = async (product, quantity) => {
     await product.update({ stock: product.stock - quantity });
@@ -35,7 +35,7 @@ const fetchCreatedOrder = async (orderId) => {
         include: [
             {
                 model: Product,
-                through: { attributes: ["quantity"] },
+                through: { attributes: ['quantity'] },
             },
         ],
     });

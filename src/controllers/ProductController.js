@@ -10,14 +10,13 @@ export const createProduct = async (req, res) => {
         const result = await createProductService(req.body);
 
         if (result.error) {
-          return sendResponse(res, 422, result.message, result.errors); 
+            return sendErrResponse(res, 422, result.message, result.errors); 
         }
 
         return sendResponse(res, 201, 'Product created successfully', result.data);
     } catch (error) {
-        console.error('Error:', error);
-        return sendErrResponse(res, 500, 'Internal server error', false, {
-          error: error.message,
+        return sendErrResponse(res, 500, 'Internal server error', {
+            error: error.message,
         });
     }
 };
