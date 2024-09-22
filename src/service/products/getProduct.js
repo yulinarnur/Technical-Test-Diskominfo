@@ -16,3 +16,16 @@ export const getProductsService = async () => {
         throw new Error('Failed to retrieve products');
     }
 };
+
+export const getProductByIdService = async (id) => {
+    try {
+        const product = await Product.findOne({
+            where: { id }
+        });
+
+        return product;
+    } catch (error) {
+        throw new Error("Failed to retrieve products");
+    }
+}
+

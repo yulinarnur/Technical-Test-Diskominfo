@@ -1,5 +1,5 @@
 import express from 'express';
-import { createProduct, getProducts } from '../controllers/ProductController.js';
+import { createProduct, getProducts, getProductById } from '../controllers/ProductController.js';
 
 const router = express.Router();
 
@@ -101,7 +101,65 @@ const router = express.Router();
  *       500:
  *         description: Internal Server Error
  */
+
+/**
+ * @swagger
+ * /api/products/{id}:
+ *   get:
+ *     summary: 
+ *     tags: [Products]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Product detail retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: integer
+ *                     name:
+ *                       type: string
+ *                     price:
+ *                       type: integer
+ *                     stock:
+ *                       type: integer
+ *                     sold:
+ *                       type: integer
+ *                     created_at:
+ *                       type: string
+ *                       format: date-time
+ *                     updated_at:
+ *                       type: string
+ *                       format: date-time
+ *       404:
+ *         description: Product not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: 'Product not found'
+ *       500:
+ *         description: Internal Server Error
+ */
+
+
 router.post('/api/products', createProduct);
 router.get('/api/products', getProducts);
+router.get('/api/products/:id', getProductById);
 
 export default router;
