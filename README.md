@@ -28,8 +28,7 @@ Pastikan berikut ini sudah terinstall:
    cd Technical-Test-Diskominfo
    
 2. **Set up database MySQL dan konfigurasi aplikasi:**
-   - Copy file **.env.example**, kemudian paste dan rename menjadi **.env**.
-   - Sesuaikan dengan data untuk konfigurasi aplikasi.
+   - Periksa dan lakukan konfigurasi pada .env
    - Di sini, saya sudah mengekspor file database yang terdapat di dalam folder **src/config**.
    - Lakukan impor database dan sesuaikan konfigurasi pada file .env.
     
