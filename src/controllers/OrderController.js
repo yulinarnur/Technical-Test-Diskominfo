@@ -1,6 +1,7 @@
 import { createOrderService } from '../service/orders/createOrder.js';
 import { listOrdersService } from '../service/orders/listOrder.js';
 import { getOrderDetailService } from '../service/orders/getOrderDetail.js';
+import { deleteOrderService } from '../service/orders/deleteOrder.js';
 import { sendResponse, sendErrResponse } from '../utils/responseUtils.js';
 
 export const createOrder = async (req, res) => {
@@ -44,5 +45,21 @@ export const getOrderDetail = async (req, res) => {
         return sendResponse(res, 200, 'Order Detail', result.data);
     } catch (error) {
         return sendErrResponse(res, 500, 'Internal server error', false, { error: error.message });
+    }
+};
+
+export const deleteOrder = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const result = await deleteOrderService(id);
+
+        if (result.error) {
+            return sendErrResponse(res, 404, result.message);
+        }
+
+        return sendResponse(res, 200, 'Order deleted successfully', result.data);
+    } catch (error) {
+        return sendErrResponse(res, 500, 'Internal server error', { error: error.message });
     }
 };
