@@ -4,9 +4,9 @@
 Dapat diakses secara lokal di http://localhost:5001/api/v3/api-docs
 
 ## Tech Stack
-- Express JS
-- MySQL
-- Sequelize
+- Express JS : Nodejs framework untuk membangun web aplikasi
+- MySQL : sistem manajemen basis data relasional (RDBMS)
+- Sequelize : ORM (Object-Relational Mapping) Node.js yang mendukung berbagai database SQL, termasuk MySQL
 
 
 ## Getting Started
